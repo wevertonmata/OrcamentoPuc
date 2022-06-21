@@ -29,22 +29,22 @@ namespace Orcamento.orc
 
         }
 
-        public Servicos getIdProduto()
+        public Servicos getProduto()
         {
             return servico;
         }
 
-        public void setIdProduto(Servicos servico)
+        public void setProduto(Servicos servico)
         {
             this.servico = servico;
         }
 
-        public Cliente getIdCliente()
+        public Cliente getCliente()
         {
             return cliente;
         }
 
-        public void setIdCliente(Cliente cliente)
+        public void setCliente(Cliente cliente)
         {
             this.cliente = cliente;
         }

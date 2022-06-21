@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Orcamento.serv;
 using Orcamento.cliente;
 using Orcamento.orc;
+using Orcamento.FileSystemCsv;
 using System.IO;
 
 
@@ -19,7 +20,10 @@ namespace Orcamento
             List<Cliente> clienteDatabase = new();
             List<Servicos> servicosDatabase = new();
             List<Orcamentario> orcamentosDatabase = new();
-
+            
+            FileCsv csv = new FileCsv();
+            csv.ReadClienteFile(clienteDatabase);
+            csv.ReadServicoFile(servicosDatabase);
 
             Console.WriteLine("=======================================");
             Console.WriteLine("Seja Bem Vindo ao Sistema Orçamentário!");
@@ -95,6 +99,7 @@ namespace Orcamento
                                 }
                                 else
                                 {
+                                    //Console.WriteLine(servicosDatabase.ToArray());
                                     foreach (Servicos servico in servicosDatabase)
                                     {
                                             Console.Clear();
@@ -164,6 +169,7 @@ namespace Orcamento
         }
     public static void cadastrarCliente(List<Cliente> clientes)
     {
+        FileCsv csv = new FileCsv();
 
         Console.WriteLine("Nome da empresa:");
         String nomeDaEmpresa = Console.ReadLine();
@@ -186,16 +192,18 @@ namespace Orcamento
         Console.WriteLine("Distância do cliente relativo a sua localização: (Ex: 14, 20");
         int distancia = int.Parse(Console.ReadLine());
 
+        csv.AppendToClienteFile(new Cliente(nome, nomeDaEmpresa, endereco, cpfCnpj, telefone, email, distancia));
         clientes.Add(new Cliente(nome, nomeDaEmpresa, endereco, cpfCnpj, telefone, email, distancia));
-            
-            Console.Clear();
-            Console.WriteLine("Cliente cadastrado com sucesso!");
-            Thread.Sleep(2000);
-            Console.Clear();
-        }
+
+        Console.Clear();
+        Console.WriteLine("Cliente cadastrado com sucesso!");
+        Thread.Sleep(2000);
+        Console.Clear();
+    }
 
     public static void cadastrarServico(List<Servicos> servicos)
     {
+        FileCsv csv = new FileCsv();
 
         Console.WriteLine("Codigo do Serviço:");
         String codigo = Console.ReadLine();
@@ -212,8 +220,9 @@ namespace Orcamento
         Console.WriteLine("Horas de Serviço:");
         int horas = int.Parse(Console.ReadLine());
 
-            
+        csv.AppendToServicoFile(new Servicos(codigo, nome, descricao, valor, horas));
         servicos.Add(new Servicos(codigo, nome, descricao, valor, horas));
+
         Console.Clear();
         Console.WriteLine("Serviço cadastrado com sucesso!");
         Thread.Sleep(2000);
@@ -222,6 +231,7 @@ namespace Orcamento
 
     public static void cadastrarOrcamento(List<Cliente> clientes, List<Servicos> servicos, List<Orcamentario> orcamentos)
     {
+            FileCsv csv = new FileCsv();
 
             for (int i = 0; i < clientes.Count; i++)
             {
@@ -247,7 +257,9 @@ namespace Orcamento
             Servicos serv = new Servicos(servicos[codServico].getCodigo(), servicos[codServico].getNome(),
                 servicos[codServico].getDescricao(), servicos[codServico].getValorDaMateria(), servicos[codServico].getHoraDeTrabalho());
 
+            csv.AppendToOrcamentoFile(new Orcamentario(serv, cli, obs));
             orcamentos.Add(new Orcamentario(serv, cli, obs));
+
             Console.Clear();
             Console.WriteLine("Orçamento cadastrado com sucesso!");
             Thread.Sleep(2000);
