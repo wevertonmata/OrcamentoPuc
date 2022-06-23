@@ -8,7 +8,7 @@ namespace Orcamento.serv
 {
     public class Servicos
     {
-        private static int servicosCriados;
+        
         private String codigo;
         private String nome;
         private String descricao;
@@ -21,8 +21,7 @@ namespace Orcamento.serv
             this.nome = nome;
             this.descricao = descricao;
             this.valorMateria = valorMateria;
-            this.horaDeTrabalho = (horaDeTrabalho * 5);
-            servicosCriados += 1;
+            this.horaDeTrabalho = horaDeTrabalho;
         }
 
         public String getCodigo()
@@ -65,11 +64,7 @@ namespace Orcamento.serv
             this.valorMateria = valor;
         }
 
-        public static int clienteCriados()
-        {
-            return servicosCriados;
-        }
-
+     
         public int getHoraDeTrabalho()
         {
             return horaDeTrabalho;

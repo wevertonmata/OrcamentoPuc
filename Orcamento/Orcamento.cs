@@ -12,10 +12,9 @@ namespace Orcamento.orc
     {
         private Servicos servico;
         private Cliente cliente;
-        private int quantidade;
-        private double valorTotal;
-        private  DateTime data;
         private String observacao;
+        private double valorTotal;
+        private DateTime data;
 
         public Orcamentario(Servicos servico, Cliente cliente, String observacao)
         {
@@ -25,7 +24,19 @@ namespace Orcamento.orc
             this.observacao = observacao;
             double custoDeInstalacao = cliente.getDistancia() * 3.8;
             double custoDeContas = 480;
-            this.valorTotal = custoDeContas + servico.getValorDaMateria() + servico.getHoraDeTrabalho() + custoDeInstalacao;
+            this.valorTotal = custoDeContas + servico.getValorDaMateria() + (servico.getHoraDeTrabalho()*5) + custoDeInstalacao;
+
+        }
+
+        public Orcamentario(Servicos servico, Cliente cliente, String observacao, double valorTotal, DateTime data)
+        {
+            this.servico = servico;
+            this.cliente = cliente;
+            this.data = data;
+            this.observacao = observacao;
+            double custoDeInstalacao = cliente.getDistancia() * 3.8;
+            double custoDeContas = 480;
+            this.valorTotal = valorTotal;
 
         }
 
@@ -49,16 +60,6 @@ namespace Orcamento.orc
             this.cliente = cliente;
         }
 
-        public int getQuantidade()
-        {
-            return quantidade;
-        }
-
-        public void setQuantidade(int quantidade)
-        {
-            this.quantidade = quantidade;
-        }
-
         public double getValorTotal()
         {
             return valorTotal;
@@ -77,6 +78,16 @@ namespace Orcamento.orc
         public void setObservacao(String observacao)
         {
             this.observacao = observacao;
+        }
+
+        public DateTime getData()
+        {
+            return data;
+        }
+
+        public void setData(DateTime date)
+        {
+            this.data = data;
         }
 
 

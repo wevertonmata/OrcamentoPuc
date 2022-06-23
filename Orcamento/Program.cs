@@ -24,6 +24,7 @@ namespace Orcamento
             FileCsv csv = new FileCsv();
             csv.ReadClienteFile(clienteDatabase);
             csv.ReadServicoFile(servicosDatabase);
+            csv.ReadOrcamentoFile(clienteDatabase, servicosDatabase, orcamentosDatabase);
 
             Console.WriteLine("=======================================");
             Console.WriteLine("Seja Bem Vindo ao Sistema Orçamentário!");
@@ -183,6 +184,10 @@ namespace Orcamento
         Console.WriteLine("CPF/CNPJ:");
         String cpfCnpj = Console.ReadLine();
 
+       while(VerificarCPF(clientes, cpfCnpj)) {
+             cpfCnpj = Console.ReadLine();
+       }
+
         Console.WriteLine("Telefone (Ex: 31 98734-9684):");
         String telefone = Console.ReadLine();
 
@@ -201,12 +206,29 @@ namespace Orcamento
         Console.Clear();
     }
 
+    public static bool VerificarCPF(List<Cliente> clientes,String cpf) {
+
+        foreach (Cliente cliente in clientes)
+        {
+            if (cpf == cliente.getCpfCNPJ())
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public static void cadastrarServico(List<Servicos> servicos)
     {
         FileCsv csv = new FileCsv();
 
         Console.WriteLine("Codigo do Serviço:");
         String codigo = Console.ReadLine();
+
+        while(VerificarCodigo( servicos, codigo)){
+            codigo = Console.ReadLine();
+        }
 
         Console.WriteLine("Nome do Serviço:");
         String nome = Console.ReadLine();
@@ -229,7 +251,21 @@ namespace Orcamento
         Console.Clear();
         }
 
-    public static void cadastrarOrcamento(List<Cliente> clientes, List<Servicos> servicos, List<Orcamentario> orcamentos)
+        public static bool VerificarCodigo(List<Servicos> servicos, String cpf)
+        {
+
+            foreach (Servicos servico in servicos)
+            {
+                if (cpf == servico.getCodigo())
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        public static void cadastrarOrcamento(List<Cliente> clientes, List<Servicos> servicos, List<Orcamentario> orcamentos)
     {
             FileCsv csv = new FileCsv();
 

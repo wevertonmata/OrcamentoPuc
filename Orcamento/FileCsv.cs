@@ -60,8 +60,8 @@ namespace Orcamento.FileSystemCsv
                 foreach (var line in lines)
                 {
                     var values = line.Split(';');
-                    if (values.Length == 5)
-                    {
+                    if (values.Length == 5) {
+                    
                         servicos.Add(new Servicos(values[0], values[1], values[2], double.Parse(values[3]), int.Parse(values[4])));
                     }
 
@@ -90,8 +90,8 @@ namespace Orcamento.FileSystemCsv
 
         }
 
-        /*
-        public void ReadOrcamentoFile(List<Orcamentario> orcamento)
+        
+        public void ReadOrcamentoFile(List<Cliente> clientes, List<Servicos> servicos, List<Orcamentario> orcamento)
         {
             try
             {
@@ -99,10 +99,29 @@ namespace Orcamento.FileSystemCsv
                 foreach (var line in lines)
                 {
                     var values = line.Split(';');
-                    if (values.Length == 3)
+                    if (values.Length == 5)
                     {
 
-                        orcamento.Add(new Orcamentario(values[0], values[1], values[2]));
+                        Cliente cli;
+                        Servicos serv;
+
+                        foreach (var cliente in clientes)
+                        {
+                            if(cliente.getCpfCNPJ() == values[1])
+                            {
+                                cli = cliente;
+
+                                foreach (var servico in servicos)
+                                {
+                                    if (servico.getCodigo() == values[0])
+                                    {
+                                        serv = servico;
+                                        orcamento.Add(new Orcamentario(serv, cli, values[2], double.Parse(values[3]), DateTime.Parse(values[4])));
+                                    }
+                                }
+
+                            }
+                        }    
                     }
 
                 }
@@ -113,13 +132,13 @@ namespace Orcamento.FileSystemCsv
                 Console.WriteLine(e.Message);
             }
         }
-         */
-
+ 
+        
         public void AppendToOrcamentoFile(Orcamentario orcamento)
         {
             try
             {
-                File.AppendAllText(@"C:\Users\wever\source\repos\OrcamentoPuc\Orcamento\bancoOrcamento.csv", $"{orcamento.getProduto()};{orcamento.getCliente()};{orcamento.getObservacao()}\n");
+                File.AppendAllText(@"C:\Users\wever\source\repos\OrcamentoPuc\Orcamento\bancoOrcamento.csv", $"{orcamento.getProduto().getCodigo()};{orcamento.getCliente().getCpfCNPJ()};{orcamento.getObservacao()};{orcamento.getValorTotal()};{orcamento.getData()}\n");
 
             }
             catch (Exception e)
