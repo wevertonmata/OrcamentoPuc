@@ -89,8 +89,7 @@ namespace Orcamento.FileSystemCsv
             }
 
         }
-
-        
+ 
         public void ReadOrcamentoFile(List<Cliente> clientes, List<Servicos> servicos, List<Orcamentario> orcamento)
         {
             try
@@ -133,7 +132,6 @@ namespace Orcamento.FileSystemCsv
             }
         }
  
-        
         public void AppendToOrcamentoFile(Orcamentario orcamento)
         {
             try
@@ -148,7 +146,7 @@ namespace Orcamento.FileSystemCsv
             }
 
         }
-       
+     
 
         //
     }
