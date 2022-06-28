@@ -78,9 +78,10 @@ namespace Orcamento.FileSystemCsv
         {
             try
             {
+                string valormateriaStr = servicos.getValorDaMateria().ToString();
                 File.AppendAllText(@"C:\Users\wever\source\repos\OrcamentoPuc\Orcamento\bancoServico.csv", $"{servicos.getCodigo()};{servicos.getNome()};{servicos.getDescricao()};" +
-                    $"{servicos.getValorDaMateria()};{servicos.getHoraDeTrabalho()}\n");
-
+                    $"{valormateriaStr};{servicos.getHoraDeTrabalho()}\n");
+               
             }
             catch (Exception e)
             {
@@ -136,7 +137,9 @@ namespace Orcamento.FileSystemCsv
         {
             try
             {
-                File.AppendAllText(@"C:\Users\wever\source\repos\OrcamentoPuc\Orcamento\bancoOrcamento.csv", $"{orcamento.getProduto().getCodigo()};{orcamento.getCliente().getCpfCNPJ()};{orcamento.getObservacao()};{orcamento.getValorTotal()};{orcamento.getData()}\n");
+                string valorTotal = orcamento.getValorTotal().ToString();
+                File.AppendAllText(@"C:\Users\wever\source\repos\OrcamentoPuc\Orcamento\bancoOrcamento.csv", $"{orcamento.getProduto().getCodigo()};" +
+                    $"{orcamento.getCliente().getCpfCNPJ()};{orcamento.getObservacao()};{valorTotal};{orcamento.getData()}\n");
 
             }
             catch (Exception e)

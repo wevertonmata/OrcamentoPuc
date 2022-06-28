@@ -78,7 +78,7 @@ namespace Orcamento.serv
         public String toString()
         {
             return "{Codigo = " + codigo + ", Nome='" + nome + ", Descrição='" + descricao + '\'' +
-                    ", Valor Da Materia = " + valorMateria + ", Valor da Hora De Trabalho=" + horaDeTrabalho + '}';
+                    ", Valor Da Materia = R$" + valorMateria.ToString() + ", Valor da Hora De Trabalho=" + horaDeTrabalho + '}';
         }
     }
 }

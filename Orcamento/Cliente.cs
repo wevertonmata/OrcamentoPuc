@@ -99,8 +99,8 @@ namespace Orcamento.cliente
 
         public String toString()
         {
-            return "[" + "Nome = " + nome + "\n Empresa = " + nomeDaEmpresa + "\n CPF/CNPJ = " + cpfCnpj +
-                    "\n Telefone = " + telefone + "\n E-mail = " + email + "\n Endereço = " + endereco + "\n Distância = " + distancia + "km ]";
+            return "=> Nome = " + nome + " | Empresa = " + nomeDaEmpresa + " | CPF/CNPJ = " + cpfCnpj +
+                    "\n Telefone = " + telefone + " | E-mail = " + email + " | Endereço = " + endereco + " | Distância = " + distancia + "km";
         }
 
     }
