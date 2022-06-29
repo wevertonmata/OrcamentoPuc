@@ -22,9 +22,9 @@ namespace Orcamento.orc
             this.cliente = cliente;
             this.data = DateTime.Now;
             this.observacao = observacao;
-            double custoDeInstalacao = ((double)cliente.getDistancia()) * 3.8;
-            double custoDeContas = 200.90;
-            this.valorTotal = custoDeContas + ((double)servico.getValorDaMateria()) + ((double)(servico.getHoraDeTrabalho())*5.0) + custoDeInstalacao;
+            double custoDeInstalacao = cliente.getDistancia() * 3.8;
+            double custoDeContas = 280.90;
+            this.valorTotal = (custoDeContas + servico.getValorDaMateria() + servico.getHoraDeTrabalho()* 5.5 + custoDeInstalacao);
 
         }
 
@@ -34,8 +34,6 @@ namespace Orcamento.orc
             this.cliente = cliente;
             this.data = data;
             this.observacao = observacao;
-            double custoDeInstalacao = ((double)cliente.getDistancia()) * 3.8;
-            double custoDeContas = 480.00;
             this.valorTotal = valorTotal;
 
         }
@@ -92,12 +90,11 @@ namespace Orcamento.orc
 
         public String toString()
         {
-            return "Orçamento [" +
-                    "Serviço = {" + servico.toString() +
-                    "} , Cliente = {" + cliente.toString() +
-                    "} , Valor Total = R$" +  valorTotal.ToString() +
-                    ", Data = " + data + '\'' +
-                    ", Observacao = " + observacao + '\'' + ']';
+            return "<=-=- Orçamento -=-=>  \n\n" +
+                    servico.toString() +
+                    "\n\n" + cliente.toString() +
+                    "\n\nValor Total: R$" +  valorTotal.ToString() +
+                    "\nData: " + data + "\nObservação: " + observacao;
         }
 
     }

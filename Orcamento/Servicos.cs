@@ -12,10 +12,10 @@ namespace Orcamento.serv
         private String codigo;
         private String nome;
         private String descricao;
-        private double valorMateria;
+        private int valorMateria;
         private int horaDeTrabalho;
 
-        public Servicos(String codigo, String nome, String descricao, double valorMateria, int horaDeTrabalho)
+        public Servicos(String codigo, String nome, String descricao, int valorMateria, int horaDeTrabalho)
         {
             this.codigo = codigo;
             this.nome = nome;
@@ -54,12 +54,12 @@ namespace Orcamento.serv
             this.descricao = descricao;
         }
 
-        public double getValorDaMateria()
+        public int getValorDaMateria()
         {
             return valorMateria;
         }
 
-        public void setValorDaMateria(double valor)
+        public void setValorDaMateria(int valor)
         {
             this.valorMateria = valor;
         }
@@ -77,8 +77,7 @@ namespace Orcamento.serv
 
         public String toString()
         {
-            return "{Codigo = " + codigo + ", Nome='" + nome + ", Descrição='" + descricao + '\'' +
-                    ", Valor Da Materia = R$" + valorMateria.ToString() + ", Valor da Hora De Trabalho=" + horaDeTrabalho + '}';
+            return "<=-=- Serviço -=-=> \nCódigo: " + codigo + "\nNome: " + nome + "\nDescrição: " + descricao +"\nValor Da Materia: R$" + valorMateria.ToString() + "\nValor da Hora De Trabalho: " + horaDeTrabalho;
         }
     }
 }

@@ -62,7 +62,7 @@ namespace Orcamento.FileSystemCsv
                     var values = line.Split(';');
                     if (values.Length == 5) {
                     
-                        servicos.Add(new Servicos(values[0], values[1], values[2], double.Parse(values[3]), int.Parse(values[4])));
+                        servicos.Add(new Servicos(values[0], values[1], values[2], int.Parse(values[3]), int.Parse(values[4])));
                     }
 
                 }
@@ -78,9 +78,8 @@ namespace Orcamento.FileSystemCsv
         {
             try
             {
-                string valormateriaStr = servicos.getValorDaMateria().ToString();
                 File.AppendAllText(@"C:\Users\wever\source\repos\OrcamentoPuc\Orcamento\bancoServico.csv", $"{servicos.getCodigo()};{servicos.getNome()};{servicos.getDescricao()};" +
-                    $"{valormateriaStr};{servicos.getHoraDeTrabalho()}\n");
+                    $"{servicos.getValorDaMateria()};{servicos.getHoraDeTrabalho()}\n");
                
             }
             catch (Exception e)
@@ -116,7 +115,7 @@ namespace Orcamento.FileSystemCsv
                                     if (servico.getCodigo() == values[0])
                                     {
                                         serv = servico;
-                                        orcamento.Add(new Orcamentario(serv, cli, values[2], double.Parse(values[3]), DateTime.Parse(values[4])));
+                                        orcamento.Add(new Orcamentario(serv, cli, values[2], int.Parse(values[3]), DateTime.Parse(values[4])));
                                     }
                                 }
 
@@ -137,9 +136,8 @@ namespace Orcamento.FileSystemCsv
         {
             try
             {
-                string valorTotal = orcamento.getValorTotal().ToString();
                 File.AppendAllText(@"C:\Users\wever\source\repos\OrcamentoPuc\Orcamento\bancoOrcamento.csv", $"{orcamento.getProduto().getCodigo()};" +
-                    $"{orcamento.getCliente().getCpfCNPJ()};{orcamento.getObservacao()};{valorTotal};{orcamento.getData()}\n");
+                    $"{orcamento.getCliente().getCpfCNPJ()};{orcamento.getObservacao()};{orcamento.getValorTotal()};{orcamento.getData()}\n");
 
             }
             catch (Exception e)

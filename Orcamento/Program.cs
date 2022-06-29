@@ -137,7 +137,18 @@ namespace Orcamento
                 valorstr = Console.ReadLine();
             }
 
-            double valor = Double.Parse(valorstr);
+            int valor;
+            
+            if (valorstr.Contains(".")) {
+                string[] dadosDoCadastro = valorstr.Split(".");
+                valor = int.Parse(dadosDoCadastro[0]);
+            }
+            else
+            {
+                valor = int.Parse(valorstr);
+            }
+            
+            
 
             Console.WriteLine("Descrição do Serviço:");
             String descricao = Console.ReadLine();
@@ -767,7 +778,7 @@ namespace Orcamento
                     {
                         valorMateria = Console.ReadLine();
                     }
-                    servicos[cod].setValorDaMateria(double.Parse(valorMateria));
+                    servicos[cod].setValorDaMateria(int.Parse(valorMateria));
                     break;
                 case 4:
                     Console.WriteLine("Horas de Trabalho:");
