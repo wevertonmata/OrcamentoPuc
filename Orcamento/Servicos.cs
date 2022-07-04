@@ -77,7 +77,7 @@ namespace Orcamento.serv
 
         public String toString()
         {
-            return "<=-=- Serviço -=-=> \nCódigo: " + codigo + "\nNome: " + nome + "\nDescrição: " + descricao +"\nValor Da Materia: R$" + valorMateria.ToString() + "\nValor da Hora De Trabalho: " + horaDeTrabalho;
+            return "<=-=- Serviço -=-=> \nCódigo: " + codigo + "\nNome: " + nome + "\nDescrição: " + descricao +"\nValor: R$" + valorMateria.ToString() + "\nHora De Trabalho: " + horaDeTrabalho;
         }
     }
 }
