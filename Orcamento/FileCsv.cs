@@ -115,7 +115,7 @@ namespace Orcamento.FileSystemCsv
                                     if (servico.getCodigo() == values[0])
                                     {
                                         serv = servico;
-                                        orcamento.Add(new Orcamentario(serv, cli, values[2], int.Parse(values[3]), DateTime.Parse(values[4])));
+                                        orcamento.Add(new Orcamentario(serv, cli, values[2], double.Parse(values[3]), DateTime.Parse(values[4])));
                                     }
                                 }
 
@@ -127,7 +127,7 @@ namespace Orcamento.FileSystemCsv
             }
             catch (Exception e)
             {
-                Console.WriteLine("Esse arquivo não pode ser lido.");
+                //Console.WriteLine("Esse arquivo não pode ser lido.");
                 Console.WriteLine(e.Message);
             }
         }
